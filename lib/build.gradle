@@ -30,7 +30,6 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation depLibs.kotlin
-
 }
 
 // maven库配置

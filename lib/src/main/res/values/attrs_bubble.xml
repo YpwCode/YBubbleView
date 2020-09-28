@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="YBubbleView">
+        <attr name="bubble_bgColor" format="color" />
+        <attr name="bubble_borderColor" format="color" />
+        <attr name="bubble_borderSize" format="dimension" />
+        <attr name="bubble_count" format="integer" />
+        <attr name="bubble_textSize" format="dimension" />
+        <attr name="bubble_textColor" format="color" />
+        <attr name="bubble_radius" format="dimension" />
+        <attr name="bubble_circle" format="boolean" />
+    </declare-styleable>
+</resources>

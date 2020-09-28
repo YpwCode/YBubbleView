@@ -1,8 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.ypw.code.view.YBubbleView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/sw_5"
+        app:bubble_count="1"/>
+
+    <com.ypw.code.view.YBubbleView
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/sw_35"
+        android:layout_marginTop="@dimen/sw_5"
+        app:bubble_count="1"
+        app:bubble_textColor="#ff0000"/>
+
+    <com.ypw.code.view.YBubbleView
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/sw_35"
+        android:layout_marginTop="@dimen/sw_5"
+        app:bubble_count="1"
+        app:bubble_textColor="#ff0000"
+        app:bubble_textSize="@dimen/sw_18" />
+
+    <com.ypw.code.view.YBubbleView
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/sw_35"
+        android:minWidth="@dimen/sw_35"
+        android:layout_marginTop="@dimen/sw_5"
+        app:bubble_count="1"
+        app:bubble_textColor="#ff0000"
+        app:bubble_textSize="@dimen/sw_18" />
+
+    <com.ypw.code.view.YBubbleView
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/sw_35"
+        android:layout_marginTop="@dimen/sw_5"
+        android:minWidth="@dimen/sw_35"
+        android:padding="@dimen/sw_3"
+        app:bubble_circle="true"
+        app:bubble_count="1"
+        app:bubble_textColor="#ff0000"
+        app:bubble_textSize="@dimen/sw_18" />
+
+    <com.ypw.code.view.YBubbleView
+        android:id="@+id/bubbleView"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/sw_5"
+        android:layout_height="@dimen/sw_35"
+        android:minWidth="@dimen/sw_15"
+        android:padding="@dimen/sw_3"
+        app:bubble_bgColor="@color/white"
+        app:bubble_borderColor="#ff0000"
+        app:bubble_borderSize="@dimen/sw_5"
+        app:bubble_circle="true"
+        app:bubble_count="10"
+        app:bubble_textColor="#ff0000"
+        app:bubble_textSize="@dimen/sw_18" />
+
+</LinearLayout>
