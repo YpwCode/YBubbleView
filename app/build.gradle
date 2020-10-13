@@ -31,6 +31,8 @@ dependencies {
 
     implementation depMyLibs.lib_dimen
     implementation depMyLibs.lib_titlebar
-    implementation project(path: ":lib")
+//    implementation project(path: ":lib")
+
+    implementation 'com.ypw.code:bubble:1.0.0'
 
 }

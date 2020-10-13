@@ -16,6 +16,23 @@ buildscript {
 
 allprojects {
     repositories {
+        maven {
+            url 'https://maven.aliyun.com/repository/public'
+        }
+        maven {
+            credentials {
+                username '5f8554452d5925c55b014445'
+                password 'qUq3HlczdVXT'
+            }
+            url 'https://packages.aliyun.com/maven/repository/2041651-release-InmsZd/'
+        }
+        maven {
+            credentials {
+                username '5f8554452d5925c55b014445'
+                password 'qUq3HlczdVXT'
+            }
+            url 'https://packages.aliyun.com/maven/repository/2041651-snapshot-ivwwLk/'
+        }
         google()
         jcenter()
         maven {
