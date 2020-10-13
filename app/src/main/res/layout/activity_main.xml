@@ -4,63 +4,79 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:orientation="vertical">
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <com.ypw.code.view.title.YTitleBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tbar_centerStr="角标气泡"
+        android:visibility="gone"/>
 
     <com.ypw.code.view.YBubbleView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/sw_5"
-        app:bubble_count="1"/>
+        android:layout_margin="@dimen/sw_5"
+        app:bubble_count="1" />
 
     <com.ypw.code.view.YBubbleView
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/sw_35"
-        android:layout_marginTop="@dimen/sw_5"
-        app:bubble_count="1"
-        app:bubble_textColor="#ff0000"/>
-
-    <com.ypw.code.view.YBubbleView
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/sw_35"
-        android:layout_marginTop="@dimen/sw_5"
-        app:bubble_count="1"
-        app:bubble_textColor="#ff0000"
-        app:bubble_textSize="@dimen/sw_18" />
-
-    <com.ypw.code.view.YBubbleView
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/sw_35"
-        android:minWidth="@dimen/sw_35"
-        android:layout_marginTop="@dimen/sw_5"
-        app:bubble_count="1"
-        app:bubble_textColor="#ff0000"
-        app:bubble_textSize="@dimen/sw_18" />
-
-    <com.ypw.code.view.YBubbleView
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/sw_35"
-        android:layout_marginTop="@dimen/sw_5"
-        android:minWidth="@dimen/sw_35"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/sw_5"
         android:padding="@dimen/sw_3"
-        app:bubble_circle="true"
         app:bubble_count="1"
-        app:bubble_textColor="#ff0000"
-        app:bubble_textSize="@dimen/sw_18" />
+        app:bubble_textSize="@dimen/sw_20" />
+
+    <com.ypw.code.view.YBubbleView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/sw_5"
+        android:padding="@dimen/sw_3"
+        app:bubble_count="1"
+        app:bubble_textColor="#7eff00"
+        app:bubble_textSize="@dimen/sw_20" />
+
+    <com.ypw.code.view.YBubbleView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/sw_5"
+        android:padding="@dimen/sw_3"
+        app:bubble_bgColor="#009688"
+        app:bubble_count="1"
+        app:bubble_textColor="#7eff00"
+        app:bubble_textSize="@dimen/sw_20" />
 
     <com.ypw.code.view.YBubbleView
         android:id="@+id/bubbleView"
         android:layout_width="wrap_content"
-        android:layout_marginTop="@dimen/sw_5"
         android:layout_height="@dimen/sw_35"
+        android:layout_margin="@dimen/sw_5"
         android:minWidth="@dimen/sw_15"
         android:padding="@dimen/sw_3"
         app:bubble_bgColor="@color/white"
-        app:bubble_borderColor="#ff0000"
-        app:bubble_borderSize="@dimen/sw_5"
+        app:bubble_borderColor="#673AB7"
+        app:bubble_borderSize="@dimen/sw_3"
         app:bubble_circle="true"
         app:bubble_count="10"
         app:bubble_textColor="#ff0000"
         app:bubble_textSize="@dimen/sw_18" />
+
+    <com.ypw.code.view.YBubbleView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/sw_6"
+        android:minWidth="@dimen/sw_15"
+        android:paddingStart="@dimen/sw_5"
+        android:paddingTop="@dimen/sw_2"
+        android:paddingEnd="@dimen/sw_5"
+        android:paddingBottom="@dimen/sw_2"
+        app:bubble_bgColor="#ff0000"
+        app:bubble_borderColor="#ff0000"
+        app:bubble_borderSize="@dimen/sw_0"
+        app:bubble_circle="true"
+        app:bubble_round="false"
+        app:bubble_text="认证中"
+        app:bubble_textColor="#ffffff"
+        app:bubble_textSize="@dimen/sw_11" />
 
 </LinearLayout>

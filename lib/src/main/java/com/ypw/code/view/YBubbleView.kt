@@ -26,6 +26,7 @@ class YBubbleView(ctx: Context, attrs: AttributeSet? = null) : View(ctx, attrs) 
     private var mRadius = 0f
     private var mTempRadius = 0f
     private var mCircle = false
+    private var mRound = false
 
     private var mFontOffset = 0f
     private var mWidth = 0
@@ -40,15 +41,21 @@ class YBubbleView(ctx: Context, attrs: AttributeSet? = null) : View(ctx, attrs) 
         attrs?.let {
             val types = context.obtainStyledAttributes(it, R.styleable.YBubbleView)
             val count = types.getInt(R.styleable.YBubbleView_bubble_count, 0)
-            mTextColor = types.getColor(R.styleable.YBubbleView_bubble_textColor, Color.BLACK)
-            mTextSize = types.getDimension(R.styleable.YBubbleView_bubble_textSize, 14f)
-            mBgColor = types.getColor(R.styleable.YBubbleView_bubble_bgColor, Color.GREEN)
-            mBorderColor = types.getColor(R.styleable.YBubbleView_bubble_borderColor, Color.GREEN)
+            val text = types.getString(R.styleable.YBubbleView_bubble_text)
+            mTextColor = types.getColor(R.styleable.YBubbleView_bubble_textColor, Color.WHITE)
+            mTextSize = types.getDimension(R.styleable.YBubbleView_bubble_textSize, 28f)
+            mBgColor = types.getColor(R.styleable.YBubbleView_bubble_bgColor, Color.RED)
+            mBorderColor = types.getColor(R.styleable.YBubbleView_bubble_borderColor, Color.RED)
             mBorderSize = types.getDimension(R.styleable.YBubbleView_bubble_borderSize, 5f)
             mRadius = types.getDimension(R.styleable.YBubbleView_bubble_radius, 5f)
-            mCircle = types.getBoolean(R.styleable.YBubbleView_bubble_circle, false)
+            mCircle = types.getBoolean(R.styleable.YBubbleView_bubble_circle, true)
+            mRound = types.getBoolean(R.styleable.YBubbleView_bubble_round, true)
             types.recycle()
-            setCount(count)
+            if (text.isNullOrBlank()) {
+                setCount(count)
+            } else {
+                setText(text)
+            }
         }
         onInit()
     }
@@ -88,6 +95,12 @@ class YBubbleView(ctx: Context, attrs: AttributeSet? = null) : View(ctx, attrs) 
         mWidth = getSize(mWidth, widthMeasureSpec)
         mHeight = getSize(mHeight, heightMeasureSpec)
 
+        if (mRound) {
+            val maxSize = Math.max(mWidth, mHeight)
+            mWidth = maxSize
+            mHeight = maxSize
+        }
+
         setMeasuredDimension(mWidth, mHeight)
 
         mBgRect.left = mBorderSize / 2
@@ -95,10 +108,11 @@ class YBubbleView(ctx: Context, attrs: AttributeSet? = null) : View(ctx, attrs) 
         mBgRect.right = mWidth - mBorderSize / 2
         mBgRect.bottom = mHeight - mBorderSize / 2
 
-        mTempRadius = if (mCircle) {
+        mTempRadius = if (mCircle || mRound) {
             mBgRect.height() / 2
         } else {
-            Math.min(mBgRect.height() / 2, mRadius)
+            val minRadius = Math.min(mBgRect.width(), mBgRect.height())
+            Math.min(minRadius / 2, mRadius)
         }
     }
 
@@ -126,10 +140,7 @@ class YBubbleView(ctx: Context, attrs: AttributeSet? = null) : View(ctx, attrs) 
             return
         }
 
-        val oldLen = mText.length
-
         mCount = count
-        mText = "$mCount"
 
         visibility = if (mCount < 1) {
             GONE
@@ -137,14 +148,29 @@ class YBubbleView(ctx: Context, attrs: AttributeSet? = null) : View(ctx, attrs) 
             VISIBLE
         }
 
-        if (mCount > 0 && oldLen == "$count".length) {
-            invalidate()
-        } else {
-            requestLayout()
-        }
+        toRefresh(mCount.toString())
     }
 
     fun getCount(): Int {
         return mCount
+    }
+
+    fun setText(text: String?) {
+        text?.let {
+            if(it.isBlank() || mText == it) {
+                return
+            }
+            toRefresh(it)
+        }
+    }
+
+    private fun toRefresh(newText: String) {
+        val oldText = mText
+        mText = newText
+        if (newText.length != oldText.length){
+            requestLayout()
+        } else {
+            postInvalidate()
+        }
     }
 }
