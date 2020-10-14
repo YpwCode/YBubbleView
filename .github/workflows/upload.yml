@@ -1,6 +1,11 @@
 name: Upload CI
 
-on: [workflow_dispatch]
+on:
+  workflow_dispatch:
+    inputs:
+      home:
+        description: 'location'
+        required: false
 
 jobs:
   build:
