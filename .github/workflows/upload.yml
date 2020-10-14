@@ -1,0 +1,13 @@
+name: Upload CI
+
+on:
+  release:
+    # Only use the types keyword to narrow down the activity types that will trigger your workflow.
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - run: ./gradlew lib:uploadRelease
+
