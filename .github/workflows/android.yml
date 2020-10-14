@@ -1,11 +1,6 @@
-name: Upload CI
+name: Android CI
 
-on:
-  workflow_dispatch:
-    inputs:
-      home:
-        description: 'location'
-        required: false
+on: [push]
 
 jobs:
   build:
@@ -20,6 +15,6 @@ jobs:
       run: git submodule update --init
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
-    - name: upload to ali maven
-      run: ./gradlew lib:uploadRelease
+    - name: Build with Gradle
+      run: ./gradlew build
 
