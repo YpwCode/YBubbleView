@@ -17,10 +17,4 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
-  upload:
-    steps:
-    - name: upload to ali maven
-      with:
-        release: created
-      run: ./gradlew lib:uploadRelease
 
