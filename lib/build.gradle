@@ -3,6 +3,8 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
+group = 'com.ypw.code'
+
 android {
     compileSdkVersion versions.compileSdkVersion
     buildToolsVersion versions.buildToolsVersion
@@ -36,7 +38,7 @@ dependencies {
 ext {
     GROUP_ID = "com.ypw.code"
     ARTIFACT_ID = "bubble"
-    VERSION = "1.0.3"
+    VERSION = "1.0.6"
 }
 apply from: "$rootDir/GradleConfigs/pack-upload.gradle"
 apply from: "$rootDir/GradleConfigs/pack-upload-ali.gradle"
