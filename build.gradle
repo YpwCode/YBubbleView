@@ -16,35 +16,35 @@ buildscript {
 
 allprojects {
     repositories {
-        maven {
-            url 'https://maven.aliyun.com/repository/public'
-        }
-        maven {
-            credentials {
-                username '5f8554452d5925c55b014445'
-                password 'qUq3HlczdVXT'
-            }
-            url 'https://packages.aliyun.com/maven/repository/2041651-release-InmsZd/'
-        }
-        maven {
-            credentials {
-                username '5f8554452d5925c55b014445'
-                password 'qUq3HlczdVXT'
-            }
-            url 'https://packages.aliyun.com/maven/repository/2041651-snapshot-ivwwLk/'
-        }
         google()
         jcenter()
         maven {
             // 可以有且仅有一个仓库不指定 name 属性，会隐式设置为 Maven
-            url = "http://localhost:8081/repository/maven-releases/"
+            url = mavens.local
             // 仓库用户名密码
             credentials {
-                username = MavenUsername
-                password = MavenPassword
+                username = mavens.localName
+                password = mavens.localPwd
             }
         }
-
+        maven {
+            // 可以有且仅有一个仓库不指定 name 属性，会隐式设置为 Maven
+            url = mavens.aliRelease
+            // 仓库用户名密码
+            credentials {
+                username = mavens.aliName
+                password = mavens.aliPwd
+            }
+        }
+        maven {
+            // 可以有且仅有一个仓库不指定 name 属性，会隐式设置为 Maven
+            url = mavens.aliSnapshot
+            // 仓库用户名密码
+            credentials {
+                username = mavens.aliName
+                password = mavens.aliPwd
+            }
+        }
     }
 }
 
