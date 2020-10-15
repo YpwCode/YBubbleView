@@ -18,8 +18,8 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
     - name: upload artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: app-apk
-          path: app/build/outputs
+      uses: actions/upload-artifact@v2
+      with:
+        name: app-apk
+        path: app/build/outputs
 
