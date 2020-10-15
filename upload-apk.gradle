@@ -1,0 +1,37 @@
+task uploadApk() {
+
+    def apkDirPath = "app/build/outputs/apk/release"
+
+    doLast {
+        def apkFile
+        rootProject.subprojects {
+            if (it.name == 'app') {
+                def apkDir = new File(apkDirPath)
+                //寻找当前路径下后缀为apk、名称包含release字样的文件
+                def apkfiles = apkDir.listFiles(new FilenameFilter() {
+                    @Override
+                    boolean accept(File dir, String name) {
+                        return (name.endsWith('.apk') && name.contains('release'))
+                    }
+                })
+                if (apkfiles == null || apkfiles.length == 0) {
+                    println("出错啦！没有找到apk文件")
+                    return
+                }
+                apkFile = apkfiles.first()
+            }
+        }
+        println "即将上传 $apkFile"
+
+        // 获取最后一次提交的 commit 信息
+        def updateLog = ("git log --pretty=format:\"%s\" -1").execute().text
+
+        exec {
+            commandLine "curl", "-k",
+            "-F", "package=@$apkFile",
+            "-F", "changelog=$updateLog",
+            // "https://192.168.88.241:1234/upload"
+            "https://172.16.28.26:1234/upload"
+        }
+    }
+}
