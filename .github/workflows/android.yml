@@ -26,4 +26,5 @@ jobs:
       uses: actions/cache@v2
       with:
         path: app/build/outputs
+        key: outputs
 
